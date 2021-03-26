@@ -1,0 +1,26 @@
+class Solution
+{
+  select(arr,i){
+    // code here such that selectionSort() sorts arr[]
+    let min = arr[i];
+    let min_i = i;
+    for(let j = i+1; j < arr.length; j++) {
+        if(arr[j] < min) {
+            min = arr[j];
+            min_i = j;
+        }
+    }
+    return min_i;
+  }
+  
+  //Function to sort the array using selection sort algorithm.
+  selectionSort(arr,n){
+    //code here
+    for(let i = 0; i < arr.length; i++) {
+        let select_i = this.select(arr, i);
+        let temp = arr[i];
+        arr[i] = arr[select_i];
+        arr[select_i] = temp;
+    }
+  }
+}
