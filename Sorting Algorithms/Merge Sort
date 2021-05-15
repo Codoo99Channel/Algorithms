@@ -1,0 +1,47 @@
+//User function Template for javascript
+/**
+ * @param {number[]} arr
+ * @param {number} l
+ * @param {number} r
+ */
+class Solution
+{
+    mergeSort(arr, l, r){
+        if (l < r) {
+            let m = Math.floor(l+(r-l)/2);
+            this.mergeSort(arr, l, m);
+            this.mergeSort(arr, m + 1, r);
+            this.merge(arr, l, m, r);
+        }
+    }
+    merge(arr, l, m, r)
+    {
+        let n1 = m - l + 1;
+        let n2 = r - m;
+        let left = arr.slice(l, m+1);
+        let right = arr.slice(m+1, r+1);
+        let i = 0, j = 0;
+        let k = l;
+        while (i < n1 && j < n2) {
+            if (left[i] <= right[j]) {
+                arr[k] = left[i];
+                i++;
+            }
+            else {
+                arr[k] = right[j];
+                j++;
+            }
+            k++;
+        }
+        while (i < n1) {
+            arr[k] = left[i];
+            i++;
+            k++;
+        }
+        while (j < n2) {
+            arr[k] = right[j];
+            j++;
+            k++;
+        }
+    }
+}
